@@ -32,31 +32,43 @@
 #             print(x, y)
 #             break
 
-#Q1018
-n, m = map(int, input().split())
-board = []
-result = []
+# #Q1018
+# n, m = map(int, input().split())
+# board = []
+# result = []
+#
+# for _ in range(n):
+#     board.append(input())
+#
+# for i in range(n-7): #가로
+#     for j in range(m-7): #세로
+#         is_black = 0 #검은색 시작
+#         is_white = 0 #흰색 시작
+#
+#         #8*8보드
+#         for a in range(i, i+8) :
+#             for b in range(j, j+8) :
+#                 if (a+b)%2 == 0 : # board[짝수][짝수] or board[홀수][홀수]
+#                     if board[a][b] !='B':
+#                         is_black += 1
+#                     if board[a][b] != 'W':
+#                         is_white += 1
+#                 else :
+#                     if board[a][b] != 'W':
+#                         is_black += 1
+#                     if board[a][b] != 'B':
+#                         is_white += 1
+#         result.append(min(is_black, is_white))
+# print(min(result))
 
-for _ in range(n):
-    board.append(input())
+#Q1436
+n = int(input())
 
-for i in range(n-7): #가로
-    for j in range(m-7): #세로
-        is_black = 0 #검은색 시작
-        is_white = 0 #흰색 시작
+i = 1
+snum = 666
+while i != n :
+    snum += 1
+    if '666' in str(snum) :
+        i += 1
 
-        #8*8보드
-        for a in range(i, i+8) :
-            for b in range(j, j+8) :
-                if (a+b)%2 == 0 : # board[짝수][짝수] or board[홀수][홀수]
-                    if board[a][b] !='B':
-                        is_black += 1
-                    if board[a][b] != 'W':
-                        is_white += 1
-                else :
-                    if board[a][b] != 'W':
-                        is_black += 1
-                    if board[a][b] != 'B':
-                        is_white += 1
-        result.append(min(is_black, is_white))
-print(min(result))
+print(snum)
