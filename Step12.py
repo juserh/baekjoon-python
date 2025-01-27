@@ -35,22 +35,28 @@
 #Q1018
 n, m = map(int, input().split())
 board = []
-swb = ['BWBWBWBW','WBWBWBWB','BWBWBWBW','WBWBWBWB', 'BWBWBWBW','WBWBWBWB','BWBWBWBW','WBWBWBWB']
-sww = ['WBWBWBWB','BWBWBWBW','WBWBWBWB','BWBWBWBW','WBWBWBWB','BWBWBWBW','WBWBWBWB','BWBWBWBW' ]
-for i in range(n):
-    l = input()
-    board.append(l)
+result = []
 
-minimum = 64
-for i in range(0, m-7) : #가로
-    for j in range(0, n-7) : #세로
-        b8 = board[j:j+8]
-        b8 = list(map(lambda ll : ll[i:i+8], b8))
-        cb = 0
-        cw = 0
-        for line in range(8) :
-            cb += sum(b8[line][ch1] != swb[line][ch1] for ch1 in range(8))
-            cw += sum(b8[line][ch2] != sww[line][ch2] for ch2 in range(8))
-        if minimum > min(cb, cw) :
-            minimum = min(cb,cw)
-print(minimum)
+for _ in range(n):
+    board.append(input())
+
+for i in range(n-7): #가로
+    for j in range(m-7): #세로
+        is_black = 0 #검은색 시작
+        is_white = 0 #흰색 시작
+
+        #8*8보드
+        for a in range(i, i+8) :
+            for b in range(j, j+8) :
+                if (a+b)%2 == 0 : # board[짝수][짝수] or board[홀수][홀수]
+                    if board[a][b] !='B':
+                        is_black += 1
+                    if board[a][b] != 'W':
+                        is_white += 1
+                else :
+                    if board[a][b] != 'W':
+                        is_black += 1
+                    if board[a][b] != 'B':
+                        is_white += 1
+        result.append(min(is_black, is_white))
+print(min(result))
