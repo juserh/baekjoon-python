@@ -75,14 +75,14 @@
 
 #Q2839
 n = int(input())
-result = []
-for i in range(n//3+1):
-    for j in range(n//3+1):
-        ww = 3*i + 5*j
-        if ww == n :
-            result.append(i+j)
+cnt = 0
 
-if len(result) >0 :
-    print(min(result))
-else :
+while n>=0 :
+    if n%5 == 0 :
+        cnt += n//5
+        print(cnt)
+        break
+    n -= 3
+    cnt += 1
+if n < 0 :
     print(-1)
