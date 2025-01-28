@@ -61,14 +61,28 @@
 #         result.append(min(is_black, is_white))
 # print(min(result))
 
-#Q1436
+# #Q1436
+# n = int(input())
+#
+# i = 1
+# snum = 666
+# while i != n :
+#     snum += 1
+#     if '666' in str(snum) :
+#         i += 1
+#
+# print(snum)
+
+#Q2839
 n = int(input())
+result = []
+for i in range(n//3+1):
+    for j in range(n//3+1):
+        ww = 3*i + 5*j
+        if ww == n :
+            result.append(i+j)
 
-i = 1
-snum = 666
-while i != n :
-    snum += 1
-    if '666' in str(snum) :
-        i += 1
-
-print(snum)
+if len(result) >0 :
+    print(min(result))
+else :
+    print(-1)
