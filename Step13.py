@@ -19,10 +19,15 @@
 # for a in arr :
 #     print(a)
 
-#Q2587
-arr = []
-for _ in range(5) :
-    arr.append(int(input()))
+# #Q2587
+# arr = []
+# for _ in range(5) :
+#     arr.append(int(input()))
+#
+# print(int(sum(arr)/5))
+# print(sorted(arr)[2])
 
-print(int(sum(arr)/5))
-print(sorted(arr)[2])
+#Q25305
+n, k = map(int, input().split())
+arr = list(map(int, input().split()))
+print(sorted(arr)[-k])
