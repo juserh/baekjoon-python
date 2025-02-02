@@ -27,7 +27,16 @@
 # print(int(sum(arr)/5))
 # print(sorted(arr)[2])
 
-#Q25305
-n, k = map(int, input().split())
-arr = list(map(int, input().split()))
-print(sorted(arr)[-k])
+# #Q25305
+# n, k = map(int, input().split())
+# arr = list(map(int, input().split()))
+# print(sorted(arr)[-k])
+
+#Q2751
+import sys
+n = int(input())
+arr = []
+for _ in range(n):
+    arr.append(int(sys.stdin.readline()))
+for a in sorted(arr) :
+    print(a)
