@@ -32,11 +32,22 @@
 # arr = list(map(int, input().split()))
 # print(sorted(arr)[-k])
 
-#Q2751
+# #Q2751
+# import sys
+# n = int(input())
+# arr = []
+# for _ in range(n):
+#     arr.append(int(sys.stdin.readline()))
+# for a in sorted(arr) :
+#     print(a)
+
+#Q10989
 import sys
 n = int(input())
-arr = []
-for _ in range(n):
-    arr.append(int(sys.stdin.readline()))
-for a in sorted(arr) :
-    print(a)
+arr = [0 for _ in range(10000)]
+for _ in range(n) :
+    arr[int(sys.stdin.readline())-1] += 1
+for i in range(len(arr)) :
+    if arr[i] != 0 :
+        for _ in range(arr[i]) :
+            print(i+1)
