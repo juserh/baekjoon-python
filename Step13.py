@@ -41,13 +41,19 @@
 # for a in sorted(arr) :
 #     print(a)
 
-#Q10989
-import sys
-n = int(input())
-arr = [0 for _ in range(10000)]
-for _ in range(n) :
-    arr[int(sys.stdin.readline())-1] += 1
-for i in range(len(arr)) :
-    if arr[i] != 0 :
-        for _ in range(arr[i]) :
-            print(i+1)
+# #Q10989
+# import sys
+# n = int(input())
+# arr = [0 for _ in range(10000)]
+# for _ in range(n) :
+#     arr[int(sys.stdin.readline())-1] += 1
+# for i in range(len(arr)) :
+#     if arr[i] != 0 :
+#         for _ in range(arr[i]) :
+#             print(i+1)
+
+#Q1427
+n=list(map(int,input()))
+#n.sort(reverse=True)
+for a in sorted(n, reverse=True) :
+    print(a,end="")
