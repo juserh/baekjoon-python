@@ -52,8 +52,17 @@
 #         for _ in range(arr[i]) :
 #             print(i+1)
 
-#Q1427
-n=list(map(int,input()))
-#n.sort(reverse=True)
-for a in sorted(n, reverse=True) :
-    print(a,end="")
+# #Q1427
+# n=list(map(int,input()))
+# #n.sort(reverse=True)
+# for a in sorted(n, reverse=True) :
+#     print(a,end="")
+
+#Q11650
+n = int(input())
+arr = []
+for _ in range(n) :
+    x, y = map(int, input().split())
+    arr.append([x,y])
+for a in sorted(arr) : #or arr.sort()
+    print(a[0],a[1])
