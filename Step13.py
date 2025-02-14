@@ -78,14 +78,14 @@
 #     print(a[0],a[1])
 
 # #Q1181
-# # n = int(input())
-# # arr = []
-# # for _ in range(n) :
-# #     arr.append(input()) #arr.append(sys.stdin.readline().strip())
-# # arr = list(set(arr))
-# # arr.sort(key = lambda x : (len(x), x))
-# # for w in arr :
-# #     print(w)
+# n = int(input())
+# arr = []
+# for _ in range(n) :
+#     arr.append(input()) #arr.append(sys.stdin.readline().strip())
+# arr = list(set(arr))
+# arr.sort(key = lambda x : (len(x), x))
+# for w in arr :
+#     print(w)
 
 #Q10814
 n = int(input())
