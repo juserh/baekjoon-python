@@ -87,12 +87,21 @@
 # for w in arr :
 #     print(w)
 
-#Q10814
+# #Q10814
+# n = int(input())
+# arr = []
+# for i in range(n):
+#     age, name = map(str, input().split())
+#     arr.append([int(age), name])
+# arr.sort(key= lambda x: x[0])
+# for a in arr :
+#     print(a[0], a[1])
+
+#Q18870
+import sys
 n = int(input())
-arr = []
-for i in range(n):
-    age, name = map(str, input().split())
-    arr.append([int(age), name])
-arr.sort(key= lambda x: x[0])
+arr = list(map(int, sys.stdin.readline().split()))
+s_arr = sorted(list(set(arr)))
+dic = {s_arr[i] : i for i in range(len(s_arr))}
 for a in arr :
-    print(a[0], a[1])
+    print(dic[a], end=" ")
