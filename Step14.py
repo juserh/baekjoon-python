@@ -12,14 +12,27 @@
 # for d in dic :
 #     print(dic[d], end=" ")
 
-#Q14425
-n, m = map(int, input().split())
+# #Q14425
+# n, m = map(int, input().split())
+# s = set()
+# for _ in range(n) :
+#     s.add(input())
+# cnt = 0
+# for _ in range(m) :
+#     i = input()
+#     if i in s :
+#         cnt += 1
+# print(cnt)
+
+#Q7785
+n = int(input())
 s = set()
 for _ in range(n) :
-    s.add(input())
-cnt = 0
-for _ in range(m) :
-    i = input()
-    if i in s :
-        cnt += 1
-print(cnt)
+    name, state = map(str, input().split())
+    if state=="enter" :
+        s.add(name)
+    if state=="leave" :
+        s.remove(name)
+l = sorted(list(s), reverse=True)
+for p in l :
+    print(p)
