@@ -24,15 +24,31 @@
 #         cnt += 1
 # print(cnt)
 
-#Q7785
-n = int(input())
-s = set()
-for _ in range(n) :
-    name, state = map(str, input().split())
-    if state=="enter" :
-        s.add(name)
-    if state=="leave" :
-        s.remove(name)
-l = sorted(list(s), reverse=True)
-for p in l :
-    print(p)
+# #Q7785
+# n = int(input())
+# s = set()
+# for _ in range(n) :
+#     name, state = map(str, input().split())
+#     if state=="enter" :
+#         s.add(name)
+#     if state=="leave" :
+#         s.remove(name)
+# l = sorted(list(s), reverse=True)
+# for p in l :
+#     print(p)
+
+#Q1620
+import sys
+n, m = map(int, sys.stdin.readline().split())
+dic = {}
+for i in range(n) :
+    name = sys.stdin.readline().strip()
+    dic[name] = i+1
+
+swap = dict(zip(dic.values(), dic.keys())) #key-value 스왑한 딕셔너리
+for _ in range(m) :
+    p = sys.stdin.readline().strip()
+    if p.isnumeric() :
+        print(swap[int(p)])
+    else :
+        print(dic[p])
