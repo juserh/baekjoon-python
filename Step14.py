@@ -37,18 +37,38 @@
 # for p in l :
 #     print(p)
 
-#Q1620
-import sys
-n, m = map(int, sys.stdin.readline().split())
-dic = {}
-for i in range(n) :
-    name = sys.stdin.readline().strip()
-    dic[name] = i+1
+# #Q1620
+# import sys
+# n, m = map(int, sys.stdin.readline().split())
+# dic = {}
+# for i in range(n) :
+#     name = sys.stdin.readline().strip()
+#     dic[name] = i+1
+#
+# swap = dict(zip(dic.values(), dic.keys())) #key-value 스왑한 딕셔너리
+# for _ in range(m) :
+#     p = sys.stdin.readline().strip()
+#     if p.isnumeric() :
+#         print(swap[int(p)])
+#     else :
+#         print(dic[p])
 
-swap = dict(zip(dic.values(), dic.keys())) #key-value 스왑한 딕셔너리
-for _ in range(m) :
-    p = sys.stdin.readline().strip()
-    if p.isnumeric() :
-        print(swap[int(p)])
+#Q10816
+import sys
+n = int(sys.stdin.readline().strip())
+arr = list(map(int, sys.stdin.readline().split()))
+m = int(sys.stdin.readline().strip())
+nums = list(map(int, sys.stdin.readline().split()))
+
+dic={}
+for a in arr :
+    if a in dic :
+        dic[a] += 1
     else :
-        print(dic[p])
+        dic[a] =1
+
+for num in nums :
+    if num in dic :
+        print(dic[num], end= " ")
+    else :
+        print(0, end=" ")
