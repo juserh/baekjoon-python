@@ -53,22 +53,38 @@
 #     else :
 #         print(dic[p])
 
-#Q10816
-import sys
-n = int(sys.stdin.readline().strip())
-arr = list(map(int, sys.stdin.readline().split()))
-m = int(sys.stdin.readline().strip())
-nums = list(map(int, sys.stdin.readline().split()))
+# #Q10816
+# import sys
+# n = int(sys.stdin.readline().strip())
+# arr = list(map(int, sys.stdin.readline().split()))
+# m = int(sys.stdin.readline().strip())
+# nums = list(map(int, sys.stdin.readline().split()))
+#
+# dic={}
+# for a in arr :
+#     if a in dic :
+#         dic[a] += 1
+#     else :
+#         dic[a] =1
+#
+# for num in nums :
+#     if num in dic :
+#         print(dic[num], end= " ")
+#     else :
+#         print(0, end=" ")
 
-dic={}
-for a in arr :
-    if a in dic :
-        dic[a] += 1
-    else :
-        dic[a] =1
+#Q1764
+n, m = map(int, input().split())
+nh = set()
+ns = set()
+for _ in range(n) :
+    name = input()
+    nh.add(name)
 
-for num in nums :
-    if num in dic :
-        print(dic[num], end= " ")
-    else :
-        print(0, end=" ")
+for _ in range(m) :
+    name = input()
+    ns.add(name)
+
+print(len(nh&ns))
+for name in sorted(nh&ns) :
+    print(name)
