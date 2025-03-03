@@ -73,18 +73,25 @@
 #     else :
 #         print(0, end=" ")
 
-#Q1764
+# #Q1764
+# n, m = map(int, input().split())
+# nh = set()
+# ns = set()
+# for _ in range(n) :
+#     name = input()
+#     nh.add(name)
+#
+# for _ in range(m) :
+#     name = input()
+#     ns.add(name)
+#
+# print(len(nh&ns))
+# for name in sorted(nh&ns) :
+#     print(name)
+
+#Q1269
 n, m = map(int, input().split())
-nh = set()
-ns = set()
-for _ in range(n) :
-    name = input()
-    nh.add(name)
+a = set(map(int, input().split()))
+b = set(map(int, input().split()))
 
-for _ in range(m) :
-    name = input()
-    ns.add(name)
-
-print(len(nh&ns))
-for name in sorted(nh&ns) :
-    print(name)
+print(len(a-b)+len(b-a))
