@@ -89,9 +89,20 @@
 # for name in sorted(nh&ns) :
 #     print(name)
 
-#Q1269
-n, m = map(int, input().split())
-a = set(map(int, input().split()))
-b = set(map(int, input().split()))
+# #Q1269
+# n, m = map(int, input().split())
+# a = set(map(int, input().split()))
+# b = set(map(int, input().split()))
+#
+# print(len(a-b)+len(b-a))
 
-print(len(a-b)+len(b-a))
+#Q11478
+s = input()
+p = set()
+
+for i in range(1, len(s)+1) :
+    for j in range(0, len(s)-i+1) :
+        str = s[j: j+i]
+        p.add(str)
+print(len(p))
+
