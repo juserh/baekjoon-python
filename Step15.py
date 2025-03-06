@@ -15,9 +15,21 @@
 #     print(math.lcm(a,b))
 # """
 
-#Q13241
-a, b = map(int, input().split())
-result = a*b
-while b > 0 :
-    a, b = b, a%b
-print(result//a)
+# #Q13241
+# a, b = map(int, input().split())
+# result = a*b
+# while b > 0 :
+#     a, b = b, a%b
+# print(result//a)
+
+#Q1735
+def gcd(x1, x2) :
+    while x2 > 0 :
+        x1, x2 = x2, x1 % x2
+    return x1
+a1, a2 = map(int, input().split())
+b1, b2 = map(int, input().split())
+s1 = b2 * a1 + a2 * b1
+s2 = a2 * b2
+n = gcd(s1, s2)
+print(s1//n, s2//n)
