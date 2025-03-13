@@ -52,26 +52,40 @@
 # dis = [(arr[i]-arr[i-1]) for i in range(1,n)]
 # print(gcd_count(dis))
 
-#Q4134
+# #Q4134
+# import sys
+# def is_decimal(num) :
+#     for i in range(2, int(num**0.5)+1) :
+#         if num%i == 0 :
+#             return False
+#     return True
+#
+# n = int(sys.stdin.readline())
+# for _ in range(n) :
+#     a = int(sys.stdin.readline())
+#     r = False
+#     while not r:
+#         if a==0 or a==1 :
+#             print(2)
+#             break
+#         r = is_decimal(a)
+#         if not r:
+#             a += 1
+#         else :
+#             print(a)
+#             break
+
+#Q1929
 import sys
 def is_decimal(num) :
+    if num == 1 : return False
     for i in range(2, int(num**0.5)+1) :
         if num%i == 0 :
             return False
     return True
+m, n = map(int, sys.stdin.readline().split())
 
-n = int(sys.stdin.readline())
-for _ in range(n) :
-    a = int(sys.stdin.readline())
-    r = False
-    while not r:
-        if a==0 or a==1 :
-            print(2)
-            break
-        r = is_decimal(a)
-        if not r:
-            a += 1
-        else :
-            print(a)
-            break
-
+for i in range(m, n+1) :
+    r = is_decimal(i)
+    if r :
+        print(i)
