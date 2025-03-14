@@ -75,17 +75,35 @@
 #             print(a)
 #             break
 
-#Q1929
-import sys
-def is_decimal(num) :
-    if num == 1 : return False
-    for i in range(2, int(num**0.5)+1) :
-        if num%i == 0 :
-            return False
-    return True
-m, n = map(int, sys.stdin.readline().split())
+# #Q1929
+# import sys
+# def is_decimal(num) :
+#     if num == 1 : return False
+#     for i in range(2, int(num**0.5)+1) :
+#         if num%i == 0 :
+#             return False
+#     return True
+# m, n = map(int, sys.stdin.readline().split())
+#
+# for i in range(m, n+1) :
+#     r = is_decimal(i)
+#     if r :
+#         print(i)
 
-for i in range(m, n+1) :
-    r = is_decimal(i)
-    if r :
-        print(i)
+#Q4948
+import sys
+num = 123456 *2 +1
+arr = [1]* num
+for i in range(num) :
+    if num == 1 : continue
+    for j in range(2, int(i**0.5)+1) :
+        if i%j == 0 :
+            arr[i] = 0
+            break
+
+while True :
+    n = int(sys.stdin.readline())
+    if n == 0 :
+        break
+    else :
+        print(sum(arr[n+1:2*n+1]))
