@@ -90,20 +90,43 @@
 #     if r :
 #         print(i)
 
-#Q4948
-import sys
-num = 123456 *2 +1
-arr = [1]* num
-for i in range(num) :
-    if num == 1 : continue
-    for j in range(2, int(i**0.5)+1) :
-        if i%j == 0 :
-            arr[i] = 0
-            break
+# #Q4948
+# import sys
+# num = 123456 *2 +1
+# arr = [1]* num
+# for i in range(num) :
+#     if num == 1 : continue
+#     for j in range(2, int(i**0.5)+1) :
+#         if i%j == 0 :
+#             arr[i] = 0
+#             break
+#
+# while True :
+#     n = int(sys.stdin.readline())
+#     if n == 0 :
+#         break
+#     else :
+#         print(sum(arr[n+1:2*n+1]))
 
-while True :
+#Q17103
+import sys
+decimals = []
+check = [0] * 1000001
+check[0] = 1
+check[1] = 1
+for i in range(2, 1000001) :
+    if check[i] == 0 :
+        decimals.append(i)
+        for j in range(2*i, 1000001, i) :
+            check[j] = 1
+
+t = int(sys.stdin.readline())
+for _ in range(t) :
     n = int(sys.stdin.readline())
-    if n == 0 :
-        break
-    else :
-        print(sum(arr[n+1:2*n+1]))
+    cnt = 0
+    for d in decimals :
+        if d > n//2 :
+            break
+        if not check[n-d] :
+                cnt += 1
+    print(cnt)
