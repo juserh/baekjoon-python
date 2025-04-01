@@ -26,15 +26,39 @@
 #         else :
 #             print(-1)
 
-#Q10773
-import sys
-k = int(sys.stdin.readline())
+# #Q10773
+# import sys
+# k = int(sys.stdin.readline())
+#
+# stack = []
+# for _ in range(k) :
+#     n = int(sys.stdin.readline())
+#     if n == 0 :
+#         stack.pop()
+#     else :
+#         stack.append(n)
+# print(sum(stack))
 
-stack = []
-for _ in range(k) :
-    n = int(sys.stdin.readline())
-    if n == 0 :
-        stack.pop()
+#Q9012
+import sys
+
+t = int(sys.stdin.readline())
+
+for _ in range(t) :
+    s = sys.stdin.readline().strip()
+    stack = []
+    for c in s :
+        if c==')' :
+            if len(stack) == 0 :
+                stack.append(c)
+                break
+            elif stack[-1] == '(':
+                stack.pop()
+            else :
+                stack.append(c)
+        else :
+            stack.append(c)
+    if len(stack) == 0:
+        print('YES')
     else :
-        stack.append(n)
-print(sum(stack))
+        print('NO')
