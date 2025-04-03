@@ -63,31 +63,52 @@
 #     else :
 #         print('NO')
 
-#Q4949
-import sys
+# #Q4949
+# import sys
+#
+# while True :
+#     s = sys.stdin.readline().rstrip()
+#     if s == "." : break
+#     stack = []
+#     for c in s :
+#         if c == '[' or c =='(' :
+#             stack.append(c)
+#         elif c == ']' :
+#             if len(stack) != 0 and stack[-1] == '[' :
+#                 stack.pop()
+#             else :
+#                 stack.append(c)
+#                 break
+#         elif c == ')' :
+#             if len(stack) != 0 and stack[-1] =='(' :
+#                 stack.pop()
+#             else :
+#                 stack.append(c)
+#                 break
+#     if len(stack) == 0 :
+#         print('yes')
+#     else:
+#         print('no')
 
-while True :
-    s = sys.stdin.readline().rstrip()
-    if s == "." : break
-    stack = []
-    for c in s :
-        if c == '[' or c =='(' :
-            stack.append(c)
-        elif c == ']' :
-            if len(stack) != 0 and stack[-1] == '[' :
-                stack.pop()
-            else :
-                stack.append(c)
-                break
-        elif c == ')' :
-            if len(stack) != 0 and stack[-1] =='(' :
-                stack.pop()
-            else :
-                stack.append(c)
-                break
-    if len(stack) == 0 :
-        print('yes')
-    else:
-        print('no')
+#Q12789
+import sys
+n = int(sys.stdin.readline())
+arr = list(map(int, sys.stdin.readline().split())) #FIFO
+sub = [] #stack
+
+nxt = 1
+for a in arr :
+    sub.append(a)
+
+    while sub and sub[-1] == nxt :
+        sub.pop()
+        nxt += 1
+
+if sub :
+    print("Sad")
+else :
+    print("Nice")
+
+
 
 
