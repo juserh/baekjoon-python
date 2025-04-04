@@ -90,25 +90,59 @@
 #     else:
 #         print('no')
 
-#Q12789
+# #Q12789
+# import sys
+# n = int(sys.stdin.readline())
+# arr = list(map(int, sys.stdin.readline().split())) #FIFO
+# sub = [] #stack
+#
+# nxt = 1
+# for a in arr :
+#     sub.append(a)
+#
+#     while sub and sub[-1] == nxt :
+#         sub.pop()
+#         nxt += 1
+#
+# if sub :
+#     print("Sad")
+# else :
+#     print("Nice")
+
+#Q18258
+from collections import deque
 import sys
+
 n = int(sys.stdin.readline())
-arr = list(map(int, sys.stdin.readline().split())) #FIFO
-sub = [] #stack
+q = deque([])
+for _ in range(n) :
+    s = list(map(str, sys.stdin.readline().split()))
 
-nxt = 1
-for a in arr :
-    sub.append(a)
-
-    while sub and sub[-1] == nxt :
-        sub.pop()
-        nxt += 1
-
-if sub :
-    print("Sad")
-else :
-    print("Nice")
-
+    if s[0] == "push" :
+        x = int(s[1])
+        q.append(x)
+    elif s[0] == "pop" :
+        if q :
+            print(q.popleft())
+        else :
+            print(-1)
+    elif s[0] == "size" :
+        print(len(q))
+    elif s[0] == "empty" :
+        if q :
+            print(0)
+        else :
+            print(1)
+    elif s[0] == "front" :
+        if q :
+            print(q[0])
+        else :
+            print(-1)
+    elif s[0] == "back" :
+        if q :
+            print(q[-1])
+        else :
+            print(-1)
 
 
 
