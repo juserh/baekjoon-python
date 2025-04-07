@@ -109,40 +109,51 @@
 # else :
 #     print("Nice")
 
-#Q18258
+# #Q18258
+# from collections import deque
+# import sys
+#
+# n = int(sys.stdin.readline())
+# q = deque([])
+# for _ in range(n) :
+#     s = list(map(str, sys.stdin.readline().split()))
+#
+#     if s[0] == "push" :
+#         x = int(s[1])
+#         q.append(x)
+#     elif s[0] == "pop" :
+#         if q :
+#             print(q.popleft())
+#         else :
+#             print(-1)
+#     elif s[0] == "size" :
+#         print(len(q))
+#     elif s[0] == "empty" :
+#         if q :
+#             print(0)
+#         else :
+#             print(1)
+#     elif s[0] == "front" :
+#         if q :
+#             print(q[0])
+#         else :
+#             print(-1)
+#     elif s[0] == "back" :
+#         if q :
+#             print(q[-1])
+#         else :
+#             print(-1)
+
+#Q2164
 from collections import deque
 import sys
 
 n = int(sys.stdin.readline())
-q = deque([])
-for _ in range(n) :
-    s = list(map(str, sys.stdin.readline().split()))
+que = deque([i for i in range(1, n+1)])
 
-    if s[0] == "push" :
-        x = int(s[1])
-        q.append(x)
-    elif s[0] == "pop" :
-        if q :
-            print(q.popleft())
-        else :
-            print(-1)
-    elif s[0] == "size" :
-        print(len(q))
-    elif s[0] == "empty" :
-        if q :
-            print(0)
-        else :
-            print(1)
-    elif s[0] == "front" :
-        if q :
-            print(q[0])
-        else :
-            print(-1)
-    elif s[0] == "back" :
-        if q :
-            print(q[-1])
-        else :
-            print(-1)
-
-
+while len(que) > 1 :
+    que.popleft()
+    last = que.popleft()
+    que.append(last)
+print(que.pop())
 
