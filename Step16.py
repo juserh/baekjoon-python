@@ -162,12 +162,14 @@ import sys
 from collections import deque
 
 n, k = map(int, sys.stdin.readline().split())
-que = deque([ i for i in range(1, n+1)])
+que = [ i for i in range(1, n+1)]
 
 out = []
-while len(que)>0 :
-    for _ in range(k-1) :
-        que.append(que.popleft())
-    out.append(str(que.popleft()))
+idx = 0
+while len(que)>=0 :
+    idx += k-1
+    if idx >= len(que) :
+        idx %= len(que)
+    out.append(str(que.pop(idx)))
 
 print('<'+', '.join(out)+'>')
