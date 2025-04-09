@@ -144,16 +144,30 @@
 #         else :
 #             print(-1)
 
-#Q2164
-from collections import deque
+# #Q2164
+# from collections import deque
+# import sys
+#
+# n = int(sys.stdin.readline())
+# que = deque([i for i in range(1, n+1)])
+#
+# while len(que) > 1 :
+#     que.popleft()
+#     last = que.popleft()
+#     que.append(last)
+# print(que.pop())
+
+#Q11866
 import sys
+from collections import deque
 
-n = int(sys.stdin.readline())
-que = deque([i for i in range(1, n+1)])
+n, k = map(int, sys.stdin.readline().split())
+que = deque([ i for i in range(1, n+1)])
 
-while len(que) > 1 :
-    que.popleft()
-    last = que.popleft()
-    que.append(last)
-print(que.pop())
+out = []
+while len(que)>0 :
+    for _ in range(k-1) :
+        que.append(que.popleft())
+    out.append(str(que.popleft()))
 
+print('<'+', '.join(out)+'>')
