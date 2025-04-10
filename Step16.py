@@ -157,19 +157,61 @@
 #     que.append(last)
 # print(que.pop())
 
-#Q11866
+# #Q11866
+# import sys
+# from collections import deque
+#
+# n, k = map(int, sys.stdin.readline().split())
+# que = [ i for i in range(1, n+1)]
+#
+# out = []
+# idx = 0
+# while len(que)>=0 :
+#     idx += k-1
+#     if idx >= len(que) :
+#         idx %= len(que)
+#     out.append(str(que.pop(idx)))
+#
+# print('<'+', '.join(out)+'>')
+
+#Q28279
 import sys
 from collections import deque
 
-n, k = map(int, sys.stdin.readline().split())
-que = [ i for i in range(1, n+1)]
+n = int(sys.stdin.readline())
+d = deque([])
 
-out = []
-idx = 0
-while len(que)>=0 :
-    idx += k-1
-    if idx >= len(que) :
-        idx %= len(que)
-    out.append(str(que.pop(idx)))
+for _ in range(n) :
+    o = list(map(int, sys.stdin.readline().split()))
 
-print('<'+', '.join(out)+'>')
+    if o[0] == 1 :
+        d.appendleft(o[1])
+    elif o[0] == 2 :
+        d.append((o[1]))
+    elif o[0] == 3 :
+        if not d :
+            print(-1)
+        else :
+            print(d.popleft())
+    elif o[0] == 4 :
+        if not d :
+            print(-1)
+        else :
+            print(d.pop())
+    elif o[0] == 5 :
+        print(len(d))
+    elif o[0] == 6 :
+        if not d :
+            print(1)
+        else :
+            print(0)
+    elif o[0] == 7 :
+        if not d :
+            print(-1)
+        else :
+            print(d[0])
+    elif o[0] == 8 :
+        if not d :
+            print(-1)
+        else :
+            print(d[-1])
