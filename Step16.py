@@ -174,44 +174,66 @@
 #
 # print('<'+', '.join(out)+'>')
 
-#Q28279
+# #Q28279
+# import sys
+# from collections import deque
+#
+# n = int(sys.stdin.readline())
+# d = deque([])
+#
+# for _ in range(n) :
+#     o = list(map(int, sys.stdin.readline().split()))
+#
+#     if o[0] == 1 :
+#         d.appendleft(o[1])
+#     elif o[0] == 2 :
+#         d.append((o[1]))
+#     elif o[0] == 3 :
+#         if not d :
+#             print(-1)
+#         else :
+#             print(d.popleft())
+#     elif o[0] == 4 :
+#         if not d :
+#             print(-1)
+#         else :
+#             print(d.pop())
+#     elif o[0] == 5 :
+#         print(len(d))
+#     elif o[0] == 6 :
+#         if not d :
+#             print(1)
+#         else :
+#             print(0)
+#     elif o[0] == 7 :
+#         if not d :
+#             print(-1)
+#         else :
+#             print(d[0])
+#     elif o[0] == 8 :
+#         if not d :
+#             print(-1)
+#         else :
+#             print(d[-1])
+
+#Q2346
 import sys
 from collections import deque
-
 n = int(sys.stdin.readline())
-d = deque([])
+q = deque(enumerate(map(int, sys.stdin.readline().split())))
 
-for _ in range(n) :
-    o = list(map(int, sys.stdin.readline().split()))
+ans = []
+while q :
+    idx, paper = q.popleft()
+    ans.append(idx + 1)
 
-    if o[0] == 1 :
-        d.appendleft(o[1])
-    elif o[0] == 2 :
-        d.append((o[1]))
-    elif o[0] == 3 :
-        if not d :
-            print(-1)
-        else :
-            print(d.popleft())
-    elif o[0] == 4 :
-        if not d :
-            print(-1)
-        else :
-            print(d.pop())
-    elif o[0] == 5 :
-        print(len(d))
-    elif o[0] == 6 :
-        if not d :
-            print(1)
-        else :
-            print(0)
-    elif o[0] == 7 :
-        if not d :
-            print(-1)
-        else :
-            print(d[0])
-    elif o[0] == 8 :
-        if not d :
-            print(-1)
-        else :
-            print(d[-1])
+    if paper > 0:
+        q.rotate(-(paper - 1))
+    elif paper < 0:
+        q.rotate(-paper)
+
+print(' '.join(map(str, ans)))
+
+
+
+
