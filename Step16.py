@@ -216,24 +216,41 @@
 #         else :
 #             print(d[-1])
 
-#Q2346
+# #Q2346
+# import sys
+# from collections import deque
+# n = int(sys.stdin.readline())
+# q = deque(enumerate(map(int, sys.stdin.readline().split())))
+#
+# ans = []
+# while q :
+#     idx, paper = q.popleft()
+#     ans.append(idx + 1)
+#
+#     if paper > 0:
+#         q.rotate(-(paper - 1))
+#     elif paper < 0:
+#         q.rotate(-paper)
+#
+# print(' '.join(map(str, ans)))
+
+#Q24511
 import sys
 from collections import deque
+
 n = int(sys.stdin.readline())
-q = deque(enumerate(map(int, sys.stdin.readline().split())))
+a = list(map(int, sys.stdin.readline().split()))
+b = deque((map(int, sys.stdin.readline().split())))
 
-ans = []
-while q :
-    idx, paper = q.popleft()
-    ans.append(idx + 1)
+m = int(sys.stdin.readline())
+c = list(map(int, sys.stdin.readline().split()))
 
-    if paper > 0:
-        q.rotate(-(paper - 1))
-    elif paper < 0:
-        q.rotate(-paper)
+ques = deque([])
+for i in range(n) :
+    if a[i] == 0 :
+        ques.appendleft(b[i])
 
-print(' '.join(map(str, ans)))
-
-
-
+for i in range(m) :
+    ques.append(c[i])
+    print(ques.popleft(), end= ' ')
 
