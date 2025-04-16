@@ -1,4 +1,9 @@
-#Q15439
+# #Q15439
+# import sys
+# n = int(sys.stdin.readline())
+# print(n*(n-1))
+
+#Q24723
 import sys
 n = int(sys.stdin.readline())
-print(n*(n-1))
+print(2**n)
