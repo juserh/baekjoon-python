@@ -18,9 +18,9 @@ for _ in range(n) :
     chat = sys.stdin.readline().rstrip()
 
     if chat == "ENTER" :
+        cnt += len(emoji)
         emoji.clear()
     else :
-        if chat not in emoji :
-            cnt += 1
-            emoji.add(chat)
+        emoji.add(chat)
+cnt += len(emoji)
 print(cnt)
