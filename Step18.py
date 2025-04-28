@@ -40,34 +40,53 @@
 #         dance.add(p1)
 # print(len(dance))
 
-#Q2108
+# #Q2108
+# import sys
+#
+# n = int(sys.stdin.readline())
+# arr = [int(sys.stdin.readline()) for _ in range(n)]
+# arr = sorted(arr)
+#
+#
+# #산술평균
+# print(round(sum(arr)/n))
+# #중앙값
+# print(arr[n//2])
+# #최빈값
+# dic = dict()
+# for a in arr :
+#     if a in dic :
+#         dic[a] += 1
+#     else :
+#         dic[a] = 1
+# mx = max(dic.values())
+# oft = []
+#
+# for a in dic :
+#     if mx == dic[a] :
+#         oft.append(a)
+# if len(oft) == 1:
+#     print(oft[0])
+# else :
+#     print(oft[1])
+# #범위
+# print(max(arr) - min(arr))
+
+#Q20920
 import sys
 
-n = int(sys.stdin.readline())
-arr = [int(sys.stdin.readline()) for _ in range(n)]
-arr = sorted(arr)
-
-
-#산술평균
-print(round(sum(arr)/n))
-#중앙값
-print(arr[n//2])
-#최빈값
+n, m = map(int, sys.stdin.readline().split())
 dic = dict()
-for a in arr :
-    if a in dic :
-        dic[a] += 1
-    else :
-        dic[a] = 1
-mx = max(dic.values())
-oft = []
 
-for a in dic :
-    if mx == dic[a] :
-        oft.append(a)
-if len(oft) == 1:
-    print(oft[0])
-else :
-    print(oft[1])
-#범위
-print(max(arr) - min(arr))
+for _ in range(n) :
+    word = sys.stdin.readline().rstrip()
+
+    if len(word) >= m :
+        if word in dic :
+            dic[word] += 1
+        else :
+            dic[word] = 1
+
+wordlist = sorted(dic.keys(), key = lambda word : (-dic[word], -len(word), word))
+for word in wordlist :
+    print(word)
