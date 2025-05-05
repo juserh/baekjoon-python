@@ -41,48 +41,71 @@
 #     s = sys.stdin.readline().rstrip()
 #     print(*isPalindrome(s))
 
-#Q24060
+# #Q24060
+# import sys
+#
+# def merge_sort(li) :
+#     global saved
+#
+#     if len(li) == 1 :
+#         return li
+#
+#     mid = (len(li)+1) // 2
+#
+#     left = merge_sort(li[:mid])
+#     right = merge_sort(li[mid:])
+#
+#     i, j = 0, 0
+#
+#     tmp = []
+#     while (i< len(left) and j< len(right)) :
+#         if left[i] <= right[j] :
+#             tmp.append(left[i])
+#             i += 1
+#         else :
+#             tmp.append(right[j])
+#             j += 1
+#
+#     while i<len(left) :
+#         tmp.append(left[i])
+#         i += 1
+#     while j<len(right):
+#         tmp.append(right[j])
+#         j += 1
+#
+#     for t in tmp :
+#         saved.append(t)
+#     return tmp
+#
+# n, k = map(int, sys.stdin.readline().split())
+# a = list(map(int, sys.stdin.readline().split()))
+#
+# saved = []
+# merge_sort(a)
+# if len(saved) < k :
+#     print(-1)
+# else :
+#  print(saved[k-1])
+
+#Q4779
 import sys
 
-def merge_sort(li) :
-    global saved
+def transform(start, end, st) :
+    d = (end-start+1) // 3
+    first = start + d
+    second = end - d
 
-    if len(li) == 1 :
-        return li
+    if d >= 1 :
+        st[first:second] = " "*d
+        transform(start, first, st)
+        transform(second, end, st)
 
-    mid = (len(li)+1) // 2
 
-    left = merge_sort(li[:mid])
-    right = merge_sort(li[mid:])
-
-    i, j = 0, 0
-
-    tmp = []
-    while (i< len(left) and j< len(right)) :
-        if left[i] <= right[j] :
-            tmp.append(left[i])
-            i += 1
-        else :
-            tmp.append(right[j])
-            j += 1
-
-    while i<len(left) :
-        tmp.append(left[i])
-        i += 1
-    while j<len(right):
-        tmp.append(right[j])
-        j += 1
-
-    for t in tmp :
-        saved.append(t)
-    return tmp
-
-n, k = map(int, sys.stdin.readline().split())
-a = list(map(int, sys.stdin.readline().split()))
-
-saved = []
-merge_sort(a)
-if len(saved) < k :
-    print(-1)
-else :
- print(saved[k-1])
+while True :
+    p = sys.stdin.readline().rstrip()
+    if p == "" :
+        break
+    n = 3**int(p)
+    s = ["-"]*n
+    transform(0, n, s)
+    print(''.join(s))
