@@ -90,22 +90,20 @@
 #Q4779
 import sys
 
-def transform(start, end, st) :
-    d = (end-start+1) // 3
-    first = start + d
-    second = end - d
-
-    if d >= 1 :
-        st[first:second] = " "*d
-        transform(start, first, st)
-        transform(second, end, st)
-
+def transform(num) :
+    if num == 1 :
+        return "-"
+    else :
+        d = num // 3
+        left = transform(d)
+        center = " " * d
+        return left + center + left
 
 while True :
-    p = sys.stdin.readline().rstrip()
-    if p == "" :
+    try:
+        n = int(sys.stdin.readline().rstrip())
+        n = 3**n
+        s = transform(n)
+        print(s)
+    except :
         break
-    n = 3**int(p)
-    s = ["-"]*n
-    transform(0, n, s)
-    print(''.join(s))
