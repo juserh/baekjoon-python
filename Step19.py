@@ -87,23 +87,47 @@
 # else :
 #  print(saved[k-1])
 
-#Q4779
+# #Q4779
+# # import sys
+# #
+# # def transform(num) :
+# #     if num == 1 :
+# #         return "-"
+# #     else :
+# #         d = num // 3
+# #         left = transform(d)
+# #         center = " " * d
+# #         return left + center + left
+# #
+# # while True :
+# #     try:
+# #         n = int(sys.stdin.readline().rstrip())
+# #         n = 3**n
+# #         s = transform(n)
+# #         print(s)
+# #     except :
+# #         break
+
+#Q2447
 import sys
 
-def transform(num) :
+def star(num) :
     if num == 1 :
-        return "-"
-    else :
-        d = num // 3
-        left = transform(d)
-        center = " " * d
-        return left + center + left
+        return ['*']
 
-while True :
-    try:
-        n = int(sys.stdin.readline().rstrip())
-        n = 3**n
-        s = transform(n)
-        print(s)
-    except :
-        break
+    pre = star(num//3)
+    result = []
+
+    for p in pre :
+        result.append(p*3)
+    for p in pre :
+        result.append(p+' '*(num//3)+p)
+    for p in pre :
+        result.append(p*3)
+
+    return result
+
+n = int(sys.stdin.readline())
+result = star(n)
+
+print('\n'.join(result))
