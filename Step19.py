@@ -88,46 +88,61 @@
 #  print(saved[k-1])
 
 # #Q4779
-# # import sys
-# #
-# # def transform(num) :
-# #     if num == 1 :
-# #         return "-"
-# #     else :
-# #         d = num // 3
-# #         left = transform(d)
-# #         center = " " * d
-# #         return left + center + left
-# #
-# # while True :
-# #     try:
-# #         n = int(sys.stdin.readline().rstrip())
-# #         n = 3**n
-# #         s = transform(n)
-# #         print(s)
-# #     except :
-# #         break
+# import sys
+#
+# def transform(num) :
+#     if num == 1 :
+#         return "-"
+#     else :
+#         d = num // 3
+#         left = transform(d)
+#         center = " " * d
+#         return left + center + left
+#
+# while True :
+#     try:
+#         n = int(sys.stdin.readline().rstrip())
+#         n = 3**n
+#         s = transform(n)
+#         print(s)
+#     except :
+#         break
 
-#Q2447
+# #Q2447
+# import sys
+#
+# def star(num) :
+#     if num == 1 :
+#         return ['*']
+#
+#     pre = star(num//3)
+#     result = []
+#
+#     for p in pre :
+#         result.append(p*3)
+#     for p in pre :
+#         result.append(p+' '*(num//3)+p)
+#     for p in pre :
+#         result.append(p*3)
+#
+#     return result
+#
+# n = int(sys.stdin.readline())
+# result = star(n)
+#
+# print('\n'.join(result))
+
+#Q11729
 import sys
 
-def star(num) :
+def hanoitop(num, current, next) :
     if num == 1 :
-        return ['*']
-
-    pre = star(num//3)
-    result = []
-
-    for p in pre :
-        result.append(p*3)
-    for p in pre :
-        result.append(p+' '*(num//3)+p)
-    for p in pre :
-        result.append(p*3)
-
-    return result
+        print(current, next)
+        return
+    hanoitop(num-1, current, 6-current-next) #1단계: n-1개를 1->2
+    print(current, next) #2단계: 마지막 n번째 원판 1->3
+    hanoitop(num-1, 6-current-next, next) #3단계: n-1개를 2->3
 
 n = int(sys.stdin.readline())
-result = star(n)
-
-print('\n'.join(result))
+print(2**n-1)
+hanoitop(n, 1, 3)
