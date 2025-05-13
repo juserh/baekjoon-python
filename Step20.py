@@ -39,7 +39,24 @@
 # visited = [0] * n
 # backtracking([], n)
 
-#Q15651
+# #Q15651
+# import sys
+#
+# def backtracking(li, num) :
+#     global m
+#     if len(li) == m :
+#         print(' '.join(map(str, li)))
+#         return
+#
+#     for i in range(1, num+1) :
+#         li.append(i)
+#         backtracking(li, num)
+#         li.pop()
+#
+# n, m = map(int, sys.stdin.readline().split())
+# backtracking([], n)
+
+#Q15652
 import sys
 
 def backtracking(li, num) :
@@ -48,7 +65,11 @@ def backtracking(li, num) :
         print(' '.join(map(str, li)))
         return
 
-    for i in range(1, num+1) :
+    start = 1
+    if len(li) > 0 :
+        start = li[-1]
+
+    for i in range(start, num+1) :
         li.append(i)
         backtracking(li, num)
         li.pop()
