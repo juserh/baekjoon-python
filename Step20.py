@@ -56,23 +56,51 @@
 # n, m = map(int, sys.stdin.readline().split())
 # backtracking([], n)
 
-#Q15652
+# #Q15652
+# import sys
+#
+# def backtracking(li, num) :
+#     global m
+#     if len(li) == m :
+#         print(' '.join(map(str, li)))
+#         return
+#
+#     start = 1
+#     if len(li) > 0 :
+#         start = li[-1]
+#
+#     for i in range(start, num+1) :
+#         li.append(i)
+#         backtracking(li, num)
+#         li.pop()
+#
+# n, m = map(int, sys.stdin.readline().split())
+# backtracking([], n)
+
+#Q9663
 import sys
 
-def backtracking(li, num) :
-    global m
-    if len(li) == m :
-        print(' '.join(map(str, li)))
-        return
+n = int(sys.stdin.readline())
+board = [-1]*n # index : 각 row, value : 해당 row에서의 퀸 위치
+cnt = 0
 
-    start = 1
-    if len(li) > 0 :
-        start = li[-1]
+def check(row) :
+    for r in range(row):
+        if board[r] == board[row] or row - r == abs(board[row] - board[r]):
+            return False
+    return True
 
-    for i in range(start, num+1) :
-        li.append(i)
-        backtracking(li, num)
-        li.pop()
+def place_queen(row, size) : #체스 보드판, 놓아야할 퀸 개수
+    global cnt
 
-n, m = map(int, sys.stdin.readline().split())
-backtracking([], n)
+    if row == size :
+        cnt += 1
+
+    else :
+        for col in range(size) :
+            board[row] = col
+            if check(row) :
+                place_queen(row+1, size)
+
+place_queen(0, n)
+print(cnt)
