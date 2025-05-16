@@ -77,30 +77,77 @@
 # n, m = map(int, sys.stdin.readline().split())
 # backtracking([], n)
 
-#Q9663
+# #Q9663
+# import sys
+#
+# n = int(sys.stdin.readline())
+# board = [-1]*n # index : 각 row, value : 해당 row에서의 퀸 위치
+# cnt = 0
+#
+# def check(row) :
+#     for r in range(row):
+#         if board[r] == board[row] or row - r == abs(board[row] - board[r]):
+#             return False
+#     return True
+#
+# def place_queen(row, size) : #체스 보드판, 놓아야할 퀸 개수
+#     global cnt
+#
+#     if row == size :
+#         cnt += 1
+#
+#     else :
+#         for col in range(size) :
+#             board[row] = col
+#             if check(row) :
+#                 place_queen(row+1, size)
+#
+# place_queen(0, n)
+# print(cnt)
+
+#Q14888
 import sys
 
+def calculate(i, func, result) :
+    global minimum
+    global maximum
+    global nums
+
+    if sum(func) == 0 :
+        minimum = min(result, minimum)
+        maximum = max(result, maximum)
+        return
+
+    if func[0] > 0 :
+        func[0] -= 1
+        calculate(i+1, func, result + nums[i])
+        func[0] += 1
+
+    if func[1] > 0 :
+        func[1] -= 1
+        calculate(i+1, func, result-nums[i])
+        func[1] += 1
+
+    if func[2] > 0 :
+        func[2] -= 1
+        calculate(i+1, func, result*nums[i])
+        func[2] += 1
+
+    if func[3] > 0 :
+        func[3] -= 1
+        if result >= 0 :
+            calculate(i+1, func, result//nums[i])
+        else :
+            calculate(i+1, func, -(abs(result)//nums[i]))
+        func[3] += 1
+
+
 n = int(sys.stdin.readline())
-board = [-1]*n # index : 각 row, value : 해당 row에서의 퀸 위치
-cnt = 0
+nums = list(map(int, sys.stdin.readline().split()) )#사용할 숫자 n개
+func = list(map(int, sys.stdin.readline().split())) #사용할 연산 n-1개 [+, -, x, %]
+minimum = 1e9
+maximum = -1e9
 
-def check(row) :
-    for r in range(row):
-        if board[r] == board[row] or row - r == abs(board[row] - board[r]):
-            return False
-    return True
-
-def place_queen(row, size) : #체스 보드판, 놓아야할 퀸 개수
-    global cnt
-
-    if row == size :
-        cnt += 1
-
-    else :
-        for col in range(size) :
-            board[row] = col
-            if check(row) :
-                place_queen(row+1, size)
-
-place_queen(0, n)
-print(cnt)
+calculate(1, func, nums[0])
+print(maximum)
+print(minimum)
