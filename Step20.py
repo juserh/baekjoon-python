@@ -105,49 +105,86 @@
 # place_queen(0, n)
 # print(cnt)
 
-#Q14888
+# #Q14888
+# import sys
+#
+# def calculate(i, func, result) :
+#     global minimum
+#     global maximum
+#     global nums
+#
+#     if sum(func) == 0 :
+#         minimum = min(result, minimum)
+#         maximum = max(result, maximum)
+#         return
+#
+#     if func[0] > 0 :
+#         func[0] -= 1
+#         calculate(i+1, func, result + nums[i])
+#         func[0] += 1
+#
+#     if func[1] > 0 :
+#         func[1] -= 1
+#         calculate(i+1, func, result-nums[i])
+#         func[1] += 1
+#
+#     if func[2] > 0 :
+#         func[2] -= 1
+#         calculate(i+1, func, result*nums[i])
+#         func[2] += 1
+#
+#     if func[3] > 0 :
+#         func[3] -= 1
+#         if result >= 0 :
+#             calculate(i+1, func, result//nums[i])
+#         else :
+#             calculate(i+1, func, -(abs(result)//nums[i]))
+#         func[3] += 1
+#
+#
+# n = int(sys.stdin.readline())
+# nums = list(map(int, sys.stdin.readline().split()) )#사용할 숫자 n개
+# func = list(map(int, sys.stdin.readline().split())) #사용할 연산 n-1개 [+, -, x, %]
+# minimum = 1e9
+# maximum = -1e9
+#
+# calculate(1, func, nums[0])
+# print(maximum)
+# print(minimum)
+
+#Q14889
 import sys
 
-def calculate(i, func, result) :
-    global minimum
-    global maximum
-    global nums
+def divide_team(cnt, idx) :
+    global n
+    global power
+    global min_dif
+    global players
 
-    if sum(func) == 0 :
-        minimum = min(result, minimum)
-        maximum = max(result, maximum)
+    if cnt == n//2 :
+        team_start = 0
+        team_link = 0
+
+        for i in range(n) :
+            for j in range(n) :
+                if players[i] and players[j] :
+                    team_start += power[i][j]
+                elif not players[i] and not players[j] :
+                    team_link += power[i][j]
+
+        min_dif = min(min_dif, abs(team_start-team_link))
         return
 
-    if func[0] > 0 :
-        func[0] -= 1
-        calculate(i+1, func, result + nums[i])
-        func[0] += 1
-
-    if func[1] > 0 :
-        func[1] -= 1
-        calculate(i+1, func, result-nums[i])
-        func[1] += 1
-
-    if func[2] > 0 :
-        func[2] -= 1
-        calculate(i+1, func, result*nums[i])
-        func[2] += 1
-
-    if func[3] > 0 :
-        func[3] -= 1
-        if result >= 0 :
-            calculate(i+1, func, result//nums[i])
-        else :
-            calculate(i+1, func, -(abs(result)//nums[i]))
-        func[3] += 1
+    for i in range(idx, n) :
+        if players[i] == 0 :
+            players[i] = 1
+            divide_team(cnt+1, i+1)
+            players[i] = 0
 
 
 n = int(sys.stdin.readline())
-nums = list(map(int, sys.stdin.readline().split()) )#사용할 숫자 n개
-func = list(map(int, sys.stdin.readline().split())) #사용할 연산 n-1개 [+, -, x, %]
-minimum = 1e9
-maximum = -1e9
-
-calculate(1, func, nums[0])
-print(maximum)
-print(minimum)
+power = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+min_dif = sys.maxsize
+players = [0 for _ in range(n)]
+divide_team(0, 0)
+print(min_dif)
