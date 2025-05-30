@@ -21,6 +21,21 @@ def bfs(y, x) :
                     q.append([ny, nx])
     return
 
+sys.setrecursionlimit(10000)
+def dfs(y, x) :
+    global n, board, visited
+
+    dy = [-1, 0, 1, 0]
+    dx = [0, -1, 0, 1]
+    color = board[y][x]
+
+    for dyy, dxx in zip(dy,dx) :
+        ny = y + dyy
+        nx = x + dxx
+        if 0<=ny<n and 0<=nx<n and visited[ny][nx] == 0 :
+            if board[ny][nx] == color :
+                visited[ny][nx] = 1
+                dfs(ny, nx)
 
 n = int(sys.stdin.readline())
 board = []
@@ -33,7 +48,8 @@ cnt_none = 0
 for i in range(n) :
     for j in range(n) :
         if visited[i][j] == 0 :
-            bfs(i, j)
+            #bfs(i, j)
+            dfs(i, j)
             cnt_none += 1
 
 for i in range(n) :
@@ -45,7 +61,8 @@ cnt_RG = 0
 for i in range(n) :
     for j in range(n) :
         if visited[i][j] == 0 :
-            bfs(i, j)
+            #bfs(i, j)
+            dfs(i,j)
             cnt_RG += 1
 
 print(cnt_none, cnt_RG)
